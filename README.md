@@ -82,3 +82,76 @@ The main interaction with the bot is through `main.py`.
 **General Help:**
 ```bash
 python main.py -h
+```
+
+1. **Command-Specific Help (e.g., for market orders):**
+   ```
+   python main.py market -h
+   ```
+
+## Available Commands:
+
+1. **Check Balance:**
+   ```
+   python main.py balance
+   python main.py balance --asset BTC
+   ```
+
+2. **Set Leverage (for a specific symbol, e.g., BTCUSDT to 5x):**
+   ```
+   python main.py --symbol BTCUSDT leverage 5
+   ```
+
+3. **Place a Market Order:**
+   ```
+   # Buy 0.001 BTCUSDT at market price
+   python main.py --symbol BTCUSDT market BUY 0.001
+   # Sell 0.01 ETHUSDT at market price
+   python main.py --symbol ETHUSDT market SELL 0.01
+   ```
+
+4. **Place a Stop-Limit Order:**
+   - stop_price: The price at which the limit order is triggered.
+   - price: The price of the limit order once triggered.
+   ```
+   # Buy 0.001 BTCUSDT: if market hits $20500 (stop_price), place a limit buy order at $20550 (price)
+   python main.py --symbol BTCUSDT stoplimit BUY 0.001 20550 20500
+   # Sell 0.01 ETHUSDT: if market hits $2900 (stop_price), place a limit sell order at $2895 (price)
+   python main.py --symbol ETHUSDT stoplimit SELL 0.01 2895 2900
+   ```
+
+5. **Get Order Status:**
+   (Replace 123456789 with an actual order ID)
+   ```
+   python main.py --symbol BTCUSDT status 123456789
+   ```
+
+6. **Get Open Orders (for a symbol):**
+   ```
+   python main.py --symbol BTCUSDT openorders
+   ```
+
+7. **Cancel an Order:**
+   (Replace 123456789 with an actual open order ID)
+   ```
+   python main.py --symbol BTCUSDT cancel 123456789
+   ```
+
+## Logging
+
+- All actions, API requests, API responses, and errors are logged.
+
+- Console Output: Provides INFO level messages for major actions and errors.
+
+- File Output: trading_bot.log in the project root contains detailed DEBUG level logs, including full API request/response payloads, which is useful for troubleshooting.
+
+## Error Handling
+
+- The bot includes error handling for:
+
+- Invalid user inputs via the CLI.
+
+- API errors returned by Binance (e.g., insufficient funds, invalid symbol, order validation errors).
+
+- Connection issues.
+  Errors are logged to both the console and the trading_bot.log file.
