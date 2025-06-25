@@ -1,6 +1,3 @@
-# Simplified-Trading-Bot
-A Python-based command-line trading bot for interacting with the Binance Futures Testnet. Place market, limit, and stop-limit orders, check balances, and manage orders. Designed for learning and testing trading strategies without real financial risk. Features comprehensive logging and error handling.
-
 # Simplified Binance Futures Trading Bot (Python)
 
 A command-line interface (CLI) application built in Python for interacting with the Binance Futures Testnet (USDT-M). This bot allows users to place market, limit, and stop-limit orders, check account balances, get order statuses, and cancel orders. It's designed for educational purposes and for testing trading strategies in a risk-free environment.
